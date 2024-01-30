@@ -1,34 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hello World</title>
+    {% block title %}<title>#health</title>{% endblock %}
     <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: sans-serif;
-            font-size: 2em;
+        h1 {
+            color: white;
             text-align: center;
+            font-family: verdana;
+        }
+        h2 {
+            color: white;
+            text-align: center;
+            font-family: verdana;
+        }
+        p {
+            color: white;
+            text-align: center;
+            font-family: verdana;
+        }
+        #Enter {
+            background-color: white;
+            border: none;
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            font-family: verdana;
+            text-decoration: none;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            font-size: 16px;
+            margin: 4px 2px;
         }
 
-
-        #masscot {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
+        body {
+            background-color: blue;
         }
     </style>
+    
+    
 </head>
 <body>
-    <h1>Hello World</h1>
-    <img id="masscot" type = "button" src="https://www.goodfreephotos.com/albums/other-photos/smiley-face-basic.jpg" onclick="window.location.href = '/signup' ; " class="button">
+    {%block content%}<h1>#health</h1>
+    <!-- <img id="masscot" type = "button" src="https://www.goodfreephotos.com/albums/other-photos/smiley-face-basic.jpg" onclick="window.location.href = '/signup' ; " class="button"> -->
     <h2>Welcome to #health, the best place for you to receive quick aid for minor problems</h2>
     <p>A bit about us.</p>
-    <button id="Enter" type="button" onclick="window.location.href = '/signup' ; " class="button">Enter</button>
+    <button id="Enter" type="button" onclick="window.location.href = '/login' ; " class="button">login</button>
+    <button id="Enter" type="button" onclick="window.location.href = '/signup' ; " class="button">signup</button>
+    {%endblock%}
 </body>
 </html>
 
-    <button type="button" onclick="alert('sign up')">Click Me!</button>
 </body>
 </html>
 
