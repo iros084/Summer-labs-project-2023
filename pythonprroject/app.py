@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 app.config['SECRET KEY'] = 'hiy348ghfurj'
@@ -9,6 +9,8 @@ def home():
 
 @app.route('/signup', methods = ['GET', 'POST'])
 def about():
+    if request.method == 'POST':
+        return redirect('/')
     return render_template('signup.html')
 
 @app.route('/login', methods = ['GET', 'POST'])
