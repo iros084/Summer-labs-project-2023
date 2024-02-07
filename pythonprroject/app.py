@@ -2,28 +2,20 @@
 
 
 import os
+import smtplib 
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, login_required, logout_user, current_user, LoginManager
 from sqlalchemy import func
 
-from Google import Create_Service
-import base64
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-CLIENT_SECRET_FILE = 'client_secret.json'
-API_NAME = 'gmail'
-API_VERSION = 'v1'
-SCOPES = ['https://mail.google.com/']
-service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
-
-
-
 
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'hiy348ghfurj'
@@ -54,8 +46,9 @@ class User(db.Model, UserMixin):
 def home():
     return render_template('home.html')
 
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
+
+@app.route('/signup', methods = ['GET', 'POST'])
+def about():
     if request.method == 'POST':
         email1 = request.form.get('email')
         password = request.form.get('password')
@@ -71,28 +64,27 @@ def signup():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        
         email1 = request.form.get('email')
         password = request.form.get('password')
         user = User.query.filter_by(email=email1).first()
         if user:
             if user.password == password:
-                login_user(user, remember=True)
-                emailMsg = 'Symptoms of Covid-19'
-                mimeMessage = MIMEMultipart()
-                mimeMessage['to'] = email1
-                mimeMessage['subject'] = emailMsg
-                mimeMessage.attach(MIMEText(emailMsg, 'plain'))
-                raw_string = base64.urlsafe_b64encode(mimeMessage.as_bytes()).decode()
-                message = service.users().messages().send(userId='me', body={'raw': raw_string}).execute()
-                print(message)
+                #login_user(user, remember=True)
+                #message = MIMEMultipart()
+                #message['From'] = email1
+                #message['To'] = email1
+                #message['Subject'] = 'Welcome to Sympton Tracker'
+                #message.attach(MIMEText('Welcome to Sympton Tracker', 'plain'))
+                #with smtplib.SMTP(host='smtp.gmail.com', port=587) as server:
+                   # server.login(email1, password)
+                   # server.send_message(message)
                 return redirect('/sympton')
-                
             else:
                 return redirect('/login')
         else:
             return redirect('/login')
     return render_template('login.html')
+
 
 @app.route('/logout')
 @login_required
@@ -103,6 +95,7 @@ def logout():
 @app.route('/sympton', methods=['GET', 'POST'])
 def sympton():
     return render_template('sympton.html')
+
 
 
 def create_database(app):
