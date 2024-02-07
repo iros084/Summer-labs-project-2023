@@ -1,0 +1,8 @@
+{%extends "home.html"%}{%block content%}
+<form method="POST" action="/login">
+    <button id="Enter" type="button" onclick="window.location.href = '/logout' ; " class="button">logout</button>
+    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+    <label for="vehicle1"> by agreeing to this you are volenteering your bio data being shown to only your doctor.</label><br>
+    <input type="submit" value="Submit">
+</form>
+{%endblock%}
