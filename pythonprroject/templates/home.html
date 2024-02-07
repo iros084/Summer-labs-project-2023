@@ -1,53 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {% block title %}<title>#health</title>{% endblock %}
+    
     <style>
         h1 {
             color: white;
             text-align: center;
-            font-family: verdana;
+            position:relative;
+            top:0px;
+            font-family: Times New Roman;
+            font-size: 60px;
+            text-shadow:0px 0px 10px black;
         }
         h2 {
             color: white;
             text-align: center;
-            font-family: verdana;
+            position:relative;
+            top:-20px;
+            font-family: Times New Roman;
+            text-shadow:0px 0px 10px black;
         }
         p {
-            color: white;
+            color: black;
             text-align: center;
             font-family: verdana;
         }
         #Enter {
-            background-color: white;
+            background-image: url(./images/homebutton1.png);
+            background-size: 100% 100%;
             border: none;
-            color: black;
-            padding: 15px 32px;
+            color: rgba(100,255,100,1);
+            padding: 20px 20px;
             text-align: center;
-            font-family: verdana;
+            font-family: Times New Roman;
             text-decoration: none;
+            text-shadow:0px 0px 5px black;
             display: flex;
             justify-content: center; /* Center horizontally */
             align-items: center; /* Center vertically */
-            font-size: 16px;
-            margin: 4px 2px;
+            font-size: 80px;
         }
 
         body {
-            background-color: blue;
+            background-image: url(./images/homebackground.png);
+            background-size: 100%;
         }
     </style>
     
     
 </head>
 <body>
-    {%block content%}<h1>#health</h1>
+    <h1>#health</h1>
     <!-- <img id="masscot" type = "button" src="https://www.goodfreephotos.com/albums/other-photos/smiley-face-basic.jpg" onclick="window.location.href = '/signup' ; " class="button"> -->
     <h2>Welcome to #health, the best place for you to receive quick aid for minor problems</h2>
     <p>A bit about us.</p>
-    <button id="Enter" type="button" onclick="window.location.href = '/login' ; " class="button">login</button>
-    <button id="Enter" type="button" onclick="window.location.href = '/signup' ; " class="button">signup</button>
-    {%endblock%}
+    <button id="Enter" type="button" onclick="window.location.href='./login.html'" class="button" style="position:absolute;top:550px;left:100px">log--in</button> 
+    <button id="Enter" type="button" onclick="window.location.href='./signup.html'" class="button" style="position:absolute;top:550px;right:100px">sign-up</button>
+    
 </body>
 </html>
 
